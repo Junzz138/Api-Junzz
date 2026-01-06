@@ -32,7 +32,7 @@ module.exports = {
     }
 
     try {
-      const result = await videy(url);
+      const results = await yt.download(url, "mp3")
       res.status(200).json({
         status: true,
         result
