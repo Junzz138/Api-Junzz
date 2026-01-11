@@ -127,7 +127,7 @@ module.exports = [
           return res.json({ status: false, error: "Url is required" });
 
         const yt = new Youtubers();
-        const results = await yt.downloadyt(url, "360", "audio")
+        const results = await yt.downloadyt(url, "128", "audio")
         res.status(200).json({
           status: true,
           result: results.url,
