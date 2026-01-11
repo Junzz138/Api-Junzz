@@ -100,7 +100,7 @@ class Youtubers {
         "title": "${title}",
         "upload": "${ago}",
         "duration": "${duration}",
-        "url": "${url}",
+        "url": "${linkUnduh}",
       };
     } catch (err) {
       return {
