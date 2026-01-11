@@ -61,12 +61,12 @@ class Youtubers {
  
     const isi = await this.Data(hasil.data);
     return {
-      title: "${title}",
-      duration: "${duration}",
-      thumbnail: "${thumbnailurl}",
-      channel: "${author}",
-      kode: isi.key,
-      kualitas: isi.video_formats.map(f => ({
+      "title": "${title}",
+      "duration": "${duration}",
+      "thumbnail': "${thumbnailurl}",
+      "channel": "${author}",
+      "kode": isi.key,
+      "kualitas": isi.video_formats.map(f => ({
         label: f.label,
         kualitas: f.height,
         default: f.default_selected
