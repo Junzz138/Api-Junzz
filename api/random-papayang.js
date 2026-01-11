@@ -1,8 +1,8 @@
 module.exports = {
-  name: "Blue Archive",
-  desc: "Random blue archive beautiful",
+  name: "Pap ayang",
+  desc: "Random Pap ayang",
   category: "Random",
-  path: "/random/ba?apikey=",
+  path: "/random/papayang?apikey=",
   async run(req, res) {
     const { apikey } = req.query;
     if (!apikey || !global.apikey.includes(apikey)) {
@@ -10,7 +10,7 @@ module.exports = {
     }
 
     try {
-      const data = await fetchJson(`https://raw.githubusercontent.com/rynxzyy/blue-archive-r-img/refs/heads/main/links.json`);
+      const data = await fetchJson(`https://img12.pixhost.to/images/507/570627648_skyzopedia.jpg`);
       const image = await getBuffer(data.url);
 
       res.writeHead(200, {
