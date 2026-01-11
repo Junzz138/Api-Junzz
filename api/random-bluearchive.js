@@ -15,9 +15,9 @@ module.exports = {
 
       res.writeHead(200, {
         'Content-Type': 'image/png',
-        'Content-Length': pedo.length
+        'Content-Length': image.length
       });
-      res.end(pedo);
+      res.end(image);
     } catch (error) {
       res.status(500).json({ status: false, error: error.message });
     }
