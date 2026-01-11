@@ -101,7 +101,7 @@ class Youtubers {
         kualitasTersedia: data.kualitas,
         thumbnail: data.thumbnail,
         durasi: data.durasi,
-        "url": linkUnduh,
+        url: linkUnduh,
       };
     } catch (err) {
       return {
