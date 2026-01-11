@@ -59,16 +59,20 @@ class Youtubers {
     const hasil = await res.json();
     if (!hasil.status) throw new Error(hasil.message || "Gagal ambil data video");
  
-    const caption = `{
-  "result": {
-    "title": "${title}",
-    "channel": "${author}",
-    "views": "${views}",
-    "duration": "${duration}",
-    "upload": "${ago}",
-    "url": "${url}"
+    const isi = await this.Data(hasil.data);
+    return {
+      judul: isi.title,
+      durasi: isi.durationLabel,
+      thumbnail: isi.thumbnail,
+      kode: isi.key,
+      kualitas: isi.video_formats.map(f => ({
+        label: f.label,
+        kualitas: f.height,
+        default: f.default_selected
+      })),
+      infoLengkap: isi
+    };
   }
-}`.trim()
  
   async getDownloadLink(kodeVideo, kualitas, type) {
     const cdn = await this.getCDN();
@@ -93,11 +97,10 @@ class Youtubers {
       const linkUnduh = await this.getDownloadLink(data.kode, kualitas, type);
       return {
         status: true,
-        judul: data.judul,
-        kualitasTersedia: data.kualitas,
-        thumbnail: data.thumbnail,
-        durasi: data.durasi,
-        url: linkUnduh,
+        "title": "${title}",
+        "upload": "${ago}",
+        "duration": "${duration}",
+        "url": "${url},
       };
     } catch (err) {
       return {
