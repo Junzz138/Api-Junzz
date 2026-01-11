@@ -61,9 +61,9 @@ class Youtubers {
  
     const isi = await this.Data(hasil.data);
     return {
-      title: video.title,
-      duration: video.duration.timestamp,
-      thumbnail: video.thumbnail
+      judul: isi.title,
+      durasi: isi.durationLabel,
+      thumbnail: isi.thumbnail,
       kode: isi.key,
       kualitas: isi.video_formats.map(f => ({
         label: f.label,
@@ -72,7 +72,7 @@ class Youtubers {
       })),
       infoLengkap: isi
     };
-  }
+       }
  
   async getDownloadLink(kodeVideo, kualitas, type) {
     const cdn = await this.getCDN();
