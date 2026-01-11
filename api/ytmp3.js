@@ -114,10 +114,10 @@ class Youtubers {
 
 module.exports = [
   {
-    name: "Ytmp3 V2",
-    desc: "Download audio youtube v2",
+    name: "Ytmp3",
+    desc: "Download audio youtube",
     category: "Downloader",
-    path: "/download/ytmp3v2?apikey=&url=",
+    path: "/download/ytmp3?apikey=&url=",
     async run(req, res) {
       try {
         const { apikey, url } = req.query;
