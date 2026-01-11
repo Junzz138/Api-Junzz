@@ -61,9 +61,10 @@ class Youtubers {
  
     const isi = await this.Data(hasil.data);
     return {
-      judul: isi.title,
-      durasi: isi.durationLabel,
-      thumbnail: isi.thumbnail,
+      title: "${title}",
+      duration: "${duration}",
+      thumbnail: "${thumbnailurl},
+      channel: "${author}",
       kode: isi.key,
       kualitas: isi.video_formats.map(f => ({
         label: f.label,
