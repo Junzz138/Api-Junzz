@@ -239,7 +239,8 @@ module.exports = [
           return res.json({ status: false, error: "Apikey invalid" });
         if (!url)
           return res.json({ status: false, error: "Url is required" });
-
+        
+        const result = await scraper.download('https://youtu.be/gzsrwM5Dhs0', {
         const results = await yt.downloadyt(url, "360", "video")
         res.status(200).json({
           status: true,
