@@ -97,11 +97,11 @@ class Youtubers {
       const linkUnduh = await this.getDownloadLink(data.kode, kualitas, type);
       return {
         status: true,
-        Title: "${title}",
-        Channel: "${author}",
-        Upload: "${ago}",
-        Duration: "${timestamp}",
-        url: "${url}",
+        judul: data.judul,
+        kualitasTersedia: data.kualitas,
+        thumbnail: data.thumbnail,
+        durasi: data.durasi,
+        url: linkUnduh,
       };
     } catch (err) {
       return {
