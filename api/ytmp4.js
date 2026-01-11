@@ -59,21 +59,16 @@ class Youtubers {
     const hasil = await res.json();
     if (!hasil.status) throw new Error(hasil.message || "Gagal ambil data video");
  
-    const isi = await this.Data(hasil.data);
-    return {
-      "title": "${title}",
-      "duration": "${duration}",
-      "thumbnail": "${thumbnailurl}",
-      "channel": "${author}",
-      kode: isi.key,
-      kualitas: isi.video_formats.map(f => ({
-        label: f.label,
-        kualitas: f.height,
-        default: f.default_selected,
-      })),
-      infoLengkap: isi
-    };
+    const caption = `{
+  "result": {
+    "title": "${title}",
+    "channel": "${author}",
+    "views": "${views}",
+    "duration": "${duration}",
+    "upload": "${ago}",
+    "url": "${url}"
   }
+}`.trim()
  
   async getDownloadLink(kodeVideo, kualitas, type) {
     const cdn = await this.getCDN();
