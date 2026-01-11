@@ -63,7 +63,7 @@ class Youtubers {
     return {
       "title": "${title}",
       "duration": "${duration}",
-      "thumbnail': "${thumbnailurl}",
+      "thumbnail": "${thumbnailurl}",
       "channel": "${author}",
       kode: isi.key,
       kualitas: isi.video_formats.map(f => ({
