@@ -61,9 +61,9 @@ class Youtubers {
  
     const isi = await this.Data(hasil.data);
     return {
-      judul: isi.title,
-      durasi: isi.durationLabel,
-      thumbnail: isi.thumbnail,
+      title: video.title,
+      duration: video.duration.timestamp,
+      thumbnail: video.thumbnail
       kode: isi.key,
       kualitas: isi.video_formats.map(f => ({
         label: f.label,
@@ -97,9 +97,10 @@ class Youtubers {
       const linkUnduh = await this.getDownloadLink(data.kode, kualitas, type);
       return {
         status: true,
-        "title": "${title}",
-        "upload": "${ago}",
-        "duration": "${duration}",
+        judul: data.judul,
+        kualitasTersedia: data.kualitas,
+        thumbnail: data.thumbnail,
+        durasi: data.durasi,
         "url": linkUnduh,
       };
     } catch (err) {
