@@ -11,29 +11,23 @@ function msToMinutes(ms) {
 async function spotifyDownload(url) {
   if (!url) throw new Error('Link-nya mana, senpai?')
 
-  const metaResponse = await axios.post('https://spotiydownloader.com/api/metainfo', { url }, {
+  const response = await axios.post('https://spotmate.online/en', { urls: spotifyUrl }, {
     headers: {
-      'Content-Type': 'application/json',
-      'Origin': 'https://spotiydownloader.com',
-      'Referer': 'https://spotiydownloader.com/id',
-      'User-Agent': 'Mozilla/5.0'
+      'user-agent': 'Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Mobile Safari/537.36',
     }
   })
-
-  const meta = metaResponse.data
-  if (!meta || !meta.success || !meta.id)
+    
+  const mate = mateResponse.data
+  if (!mate || !mate.success || !mate.id)
     throw new Error('Gomen senpai! Aku gagal mengambil info lagunya')
 
-  const dlResponse = await axios.post('https://spotiydownloader.com/api/download', { id: meta.id }, {
+  const response = await axios.post('https://spotmate.online/getTrackData', { urls: spotifyUrl }, {
     headers: {
-      'Content-Type': 'application/json',
-      'Origin': 'https://spotiydownloader.com',
-      'Referer': 'https://spotiydownloader.com/id',
-      'User-Agent': 'Mozilla/5.0'
+      'user-agent': 'Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Mobile Safari/537.36',
     }
   })
 
-  const result = dlResponse.data
+  const result = response.data
   if (!result || !result.success || !result.link)
     throw new Error('Yabai! Gagal dapetin link-nya senpai!')
 
