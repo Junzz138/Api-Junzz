@@ -18,7 +18,6 @@ module.exports = [
           return res.json({ status: false, error: "Url is required" });
         }
 
-        // 🔥 Panggil API kriszzyy
         const api = `https://api.kriszzyy.xyz/downloader/yta?url=${encodeURIComponent(url)}`;
         const response = await fetch(api);
         const json = await response.json();
@@ -31,7 +30,7 @@ module.exports = [
 
         res.status(200).json({
           status: true,
-          creator: json.creator,
+          creator: json.creatorName,
           result: {
             title: data.metadata.title,
             channel: data.metadata.channel,
