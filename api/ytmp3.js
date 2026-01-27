@@ -130,14 +130,7 @@ module.exports = [
         const results = await yt.downloadyt(url, "128", "audio")
         res.status(200).json({
           status: true,
-          result: {
-          title: data.metadata.title,
-          channel: data.metadata.channel,
-          duration: data.metadata.lengthSeconds,
-          views: data.metadata.viewCount,
-          thumbnail: data.metadata.thumbnail,
-          download_url: results.url,
-          filename: data.download.filename
+          result: results.url,
         });
       } catch (error) {
         res.status(500).json({ status: false, error: error.message });
