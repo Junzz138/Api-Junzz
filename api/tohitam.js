@@ -5,13 +5,36 @@ module.exports = {
   path: "/imagecreator/tohitam?apikey=&url=",
   async run(req, res) {
     const { apikey, url } = req.query;
-    if (!apikey || !global.apikey.includes(apikey)) return res.json({ status: false, error: "Apikey invalid" });
-    if (!url) return res.json({ status: false, error: "Url is required" });
+
+    if (!apikey || !global.apikey.includes(apikey)) {
+      return res.json({ status: false, error: "Apikey invalid" });
+    }
+
+    if (!url) {
+      return res.json({ status: false, error: "Url is required" });
+    }
+
     try {
-      const ap = await fetchJson(`https://api-faa.my.id/faa/tohitam?url=${encodeURIComponent(url)}`)
-      res.status(200).json({ status: true, result: ap.image.jpg });
+      const api = await fetchJson(
+        `https://api-faa.my.id/faa/tohitam?url=${encodeURIComponent(url)}`
+      );
+
+      if (!api.status) {
+        return res.status(500).json({
+          status: false,
+          error: api.error || "API error"
+        });
+      }
+
+      res.status(200).json({
+        result: api.result
+      });
+
     } catch (e) {
-      res.status(500).json({ status: false, error: e.message });
+      res.status(500).json({
+        status: false,
+        error: e.message
+      });
     }
   }
-}
+};
