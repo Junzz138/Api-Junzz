@@ -9,7 +9,7 @@ module.exports = {
     if (!url) return res.json({ status: false, error: "Url is required" });
     try {
       const response = await fetchJson(`https://api-faa.my.id/faa/tohitam?url=${encodeURIComponent(url)`)
-      res.status(200).json({ status: true, result: response.url });
+      res.status(200).json({ status: true, result: response.image.url });
     } catch (e) {
       res.status(500).json({ status: false, error: e.message });
     }
