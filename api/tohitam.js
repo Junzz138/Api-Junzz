@@ -8,8 +8,8 @@ module.exports = {
     if (!apikey || !global.apikey.includes(apikey)) return res.json({ status: false, error: "Apikey invalid" });
     if (!url) return res.json({ status: false, error: "Url is required" });
     try {
-      const ap = await fetchJson(`https://api-faa.my.id/faa/tohitam?url=${imageUrl}`)
-      res.status(200).json({ status: true, result: ap.image.url });
+      const ap = await fetchJson(`https://api-faa.my.id/faa/tohitam?url=${ImageUrl}`)
+      res.status(200).json({ status: true, result: ap.imageUrl });
     } catch (e) {
       res.status(500).json({ status: false, error: e.message });
     }
