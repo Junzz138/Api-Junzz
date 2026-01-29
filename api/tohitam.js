@@ -6,24 +6,25 @@ module.exports = {
   async run(req, res) {
     const { apikey, url } = req.query;
 
-    if (!apikey || !global.apikey.includes(apikey)) {
+    if (!apikey || !global.apikey.includes(apikey))
       return res.json({ status: false, error: "Apikey invalid" });
-    }
 
-    if (!url) {
+    if (!url)
       return res.json({ status: false, error: "Url is required" });
-    }
 
     try {
       const ap = await fetchJson(
         `https://api-faa.my.id/faa/tohitam?url=${encodeURIComponent(url)}`
       );
 
-      res.status(200).json({
+      console.log(ap); // 🔥 penting
+
+      res.json({
         status: true,
-        result: ap.result || ap.image || ap
+        result: ap
       });
     } catch (e) {
+      console.log(e);
       res.status(500).json({
         status: false,
         error: e.message
